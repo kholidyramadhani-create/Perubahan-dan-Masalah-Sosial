@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Soal Perubahan & Masalah Sosial</title>
+    <style>
+        /* ===== RESET & VARIABEL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f5f7fc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #dbeafe;
+            --success: #16a34a;
+            --success-light: #dcfce7;
+            --danger: #dc2626;
+            --danger-light: #fee2e2;
+            --warning: #f59e0b;
+            --warning-light: #fef3c7;
+            --gray: #94a3b8;
+            --gray-light: #f1f5f9;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+        }
+
+        .dark {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --primary-light: #1e293b;
+            --success: #22c55e;
+            --success-light: #14532d;
+            --danger: #ef4444;
+            --danger-light: #7f1d1d;
+            --warning: #f59e0b;
+            --warning-light: #713f12;
+            --gray: #64748b;
+            --gray-light: #1e293b;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background var(--transition), color var(--transition);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #app {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            transition: background var(--transition), box-shadow var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background var(--transition), transform 0.15s, box-shadow var(--transition);
+            background: var(--gray-light);
+            color: var(--text);
+            text-decoration: none;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: #fff;
+        }
+        .btn-success:hover {
+            background: #15803d;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--text);
+        }
+        .btn-outline:hover {
+            background: var(--gray-light);
+        }
+
+        .btn-sm {
+            padding: 4px 12px;
+            font-size: 0.8rem;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .header-top h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .header-top h1 small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-left: 8px;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .header-stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--gray-light);
+            border-radius: 99px;
+            overflow: hidden;
+            margin: 12px 0 4px;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 99px;
+            transition: width 0.4s ease;
+        }
+
+        .question-number {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--gray-light);
+            border-radius: var(--radius-sm);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: background var(--transition), border-color var(--transition), transform 0.15s;
+            font-size: 0.95rem;
+        }
+        .option:hover:not(.disabled) {
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+        .option .letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .option .text {
+            flex: 1;
+        }
+
+        .option.correct {
+            border-color: var(--success);
+            background: var(--success-light);
+        }
+        .option.correct .letter {
+            background: var(--success);
+            border-color: var(--success);
+            color: #fff;
+        }
+
+        .option.wrong {
+            border-color: var(--danger);
+            background: var(--danger-light);
+        }
+        .option.wrong .letter {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: #fff;
+        }
+
+        .option.disabled {
+            cursor: default;
+        }
+        .option.disabled:hover {
+            border-color: transparent;
+            transform: none;
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+        }
+
+        .feedback {
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            margin: 12px 0 18px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: none;
+        }
+        .feedback.show {
+            display: block;
+        }
+        .feedback.correct {
+            background: var(--success-light);
+            border-left: 4px solid var(--success);
+            color: var(--success);
+        }
+        .feedback.wrong {
+            background: var(--danger-light);
+            border-left: 4px solid var(--danger);
+            color: var(--danger);
+        }
+        .feedback .answer-reveal {
+            font-weight: 600;
+        }
+        .feedback .explanation {
+            margin-top: 6px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            color: var(--text-secondary);
+        }
+
+        .question-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 12px 0 8px;
+        }
+        .question-nav .qn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: var(--gray-light);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: background var(--transition), transform 0.15s;
+            border: 1.5px solid transparent;
+        }
+        .question-nav .qn:hover {
+            transform: scale(1.05);
+        }
+        .question-nav .qn.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .question-nav .qn.answered-correct {
+            background: var(--success);
+            color: #fff;
+        }
+        .question-nav .qn.answered-wrong {
+            background: var(--danger);
+            color: #fff;
+        }
+        .question-nav .qn.current {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .setup-grid label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .setup-grid select,
+        .setup-grid input {
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-size: 0.9rem;
+            transition: border var(--transition);
+        }
+        .setup-grid select:focus,
+        .setup-grid input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .setup-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .mode-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 12px 0 16px;
+        }
+        .mode-tabs .btn {
+            flex: 1;
+            min-width: 100px;
+            justify-content: center;
+        }
+        .mode-tabs .btn.active-mode {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .review-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        .review-item .r-num {
+            font-weight: 700;
+            min-width: 40px;
+            font-size: 0.9rem;
+        }
+        .review-item .r-q {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+        .review-item .r-answer {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .review-item .r-answer.correct {
+            color: var(--success);
+        }
+        .review-item .r-answer.wrong {
+            color: var(--danger);
+        }
+
+        .review-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .qris-section {
+            margin-top: 24px;
+            padding: 24px 20px 20px;
+            border-radius: var(--radius);
+            background: linear-gradient(145deg, var(--surface), var(--gray-light));
+            border: 2px solid var(--border);
+            text-align: center;
+            transition: border-color var(--transition);
+        }
+        .qris-section:hover {
+            border-color: var(--primary);
+        }
+
+        .qris-section .qris-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .qris-section .qris-title .icon {
+            font-size: 1.3rem;
+        }
+
+        .qris-section .qris-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 8px;
+            background: #fff;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 220px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .qris-section .qris-image-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .qris-section .qris-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            border-radius: calc(var(--radius-sm) - 2px);
+            background: #fff;
+        }
+
+        .qris-section .qris-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 99px;
+            margin: 10px auto 12px;
+            opacity: 0.4;
+        }
+
+        .qris-section .qris-caption {
+            margin-top: 6px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        .qris-section .qris-caption .highlight {
+            background: var(--primary-light);
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+        .qris-section .qris-sub {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .qris-section {
+                padding: 18px 14px 16px;
+                margin-top: 18px;
+            }
+            .qris-section .qris-image-wrapper {
+                max-width: 160px;
+            }
+            .qris-section .qris-image {
+                max-width: 140px;
+            }
+            .qris-section .qris-caption {
+                font-size: 1.05rem;
+            }
+            .qris-section .qris-title {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .qris-section .qris-image-wrapper {
+                max-width: 130px;
+                padding: 6px;
+            }
+            .qris-section .qris-image {
+                max-width: 110px;
+            }
+            .qris-section .qris-caption {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+            .card {
+                padding: 16px;
+            }
+            .header-top h1 {
+                font-size: 1.2rem;
+            }
+            .header-stats {
+                font-size: 0.8rem;
+                gap: 10px;
+            }
+            .question-text {
+                font-size: 0.95rem;
+            }
+            .option {
+                font-size: 0.9rem;
+                padding: 10px 14px;
+            }
+            .setup-grid {
+                grid-template-columns: 1fr;
+            }
+            .mode-tabs .btn {
+                min-width: 60px;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            .question-nav .qn {
+                width: 32px;
+                height: 32px;
+                font-size: 0.7rem;
+            }
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .mt-12 {
+            margin-top: 12px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        .result-score {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .result-detail {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .scroll-x {
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .theme-toggle:hover {
+            background: var(--gray-light);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <!-- ===== HEADER ===== -->
+        <div class="card">
+            <div class="header-top">
+                <h1>📘 Perubahan & Masalah Sosial <small>120 Soal</small></h1>
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                    <span class="header-stats">
+                        <span id="progressText">0/0</span>
+                        <span>|</span>
+                        <span>✅ <span id="correctCount">0</span></span>
+                        <span>❌ <span id="wrongCount">0</span></span>
+                        <span>🎯 <span id="scorePercent">0%</span></span>
+                    </span>
+                    <button class="theme-toggle" id="themeToggle" title="Mode Gelap">🌙</button>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="fill" id="progressFill" style="width:0%"></div>
+            </div>
+        </div>
+
+        <!-- ===== SETUP ===== -->
+        <div class="card" id="setupPanel">
+            <div class="card-header">
+                <span class="card-title">⚙️ Pengaturan Latihan</span>
+                <span style="font-size:0.85rem;color:var(--text-secondary);">Total soal: <strong id="totalSoalDisplay">120</strong></span>
+            </div>
+
+            <div class="mode-tabs" id="modeTabs">
+                <button class="btn active-mode" data-mode="all">📚 Semua Soal</button>
+                <button class="btn" data-mode="count">🔢 Pilih Jumlah</button>
+                <button class="btn" data-mode="range">📏 Rentang</button>
+                <button class="btn" data-mode="pick">☑️ Pilih Tertentu</button>
+                <button class="btn" data-mode="random">🎲 Acak</button>
+            </div>
+
+            <div id="modeOptions"></div>
+
+            <div class="setup-actions">
+                <button class="btn btn-primary" id="startBtn">🚀 Mulai Latihan</button>
+                <button class="btn btn-outline" id="resetBtn">🔄 Mulai Ulang</button>
+            </div>
+
+            <div style="margin-top:12px;font-size:0.85rem;color:var(--text-secondary);">
+                💡 Pilih mode lalu klik "Mulai Latihan"
+            </div>
+            <div style="margin-top:8px;">
+                <label style="display:flex;align-items:center;gap:8px;font-size:0.9rem;cursor:pointer;">
+                    <input type="checkbox" id="examModeCheck">
+                    🎯 Mode Ujian (hasil & pembahasan di akhir)
+                </label>
+            </div>
+
+            <div class="qris-section">
+                <div class="qris-title">
+                    <span class="icon">💳</span> Dukung Perjalanan Ibadah
+                </div>
+                <div class="qris-image-wrapper">
+                    <img src="IMG_2166.PNG" alt="QRIS Gasan Naik Haji" class="qris-image" />
+                </div>
+                <div class="qris-divider"></div>
+                <div class="qris-caption">
+                    <span class="highlight">Gasan Naik Haji</span>
+                </div>
+                <div class="qris-sub">🔹 Scan QRIS untuk berdonasi 🔹</div>
+            </div>
+        </div>
+
+        <!-- ===== PANEL SOAL ===== -->
+        <div class="card hidden" id="questionPanel">
+            <div class="flex-between mb-8">
+                <div>
+                    <span class="question-number" id="qNumDisplay">Soal 1</span>
+                    <span style="margin-left:8px;font-size:0.85rem;color:var(--text-secondary);" id="qIndexDisplay">1 / 120</span>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                    <button class="btn btn-sm btn-outline" id="prevBtn">◀ Sebelum</button>
+                    <button class="btn btn-sm btn-outline" id="nextBtn">Berikut ▶</button>
+                </div>
+            </div>
+
+            <div class="question-text" id="questionText">Loading...</div>
+
+            <div class="options" id="optionsContainer"></div>
+
+            <div class="feedback" id="feedback">
+                <div class="answer-reveal" id="feedbackAnswer"></div>
+                <div class="explanation" id="feedbackExplanation"></div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+                <button class="btn btn-success" id="nextQuestionBtn" disabled>➡️ Soal Berikutnya</button>
+                <button class="btn btn-outline" id="reviewToggleBtn">📋 Review</button>
+                <button class="btn btn-outline" id="restartFromQuestionBtn" style="color:var(--danger);border-color:var(--danger);">🔄 Mulai Ulang Latihan</button>
+            </div>
+
+            <div class="scroll-x mt-12">
+                <div class="question-nav" id="questionNav"></div>
+            </div>
+        </div>
+
+        <!-- ===== PANEL REVIEW ===== -->
+        <div class="card hidden" id="reviewPanel">
+            <div class="card-header">
+                <span class="card-title">📋 Review Jawaban</span>
+                <button class="btn btn-sm btn-outline" id="closeReviewBtn">✕ Tutup</button>
+            </div>
+            <div class="review-filter">
+                <button class="btn btn-sm btn-outline active-review-filter" data-filter="all">Semua</button>
+                <button class="btn btn-sm btn-outline" data-filter="correct">✅ Benar</button>
+                <button class="btn btn-sm btn-outline" data-filter="wrong">❌ Salah</button>
+                <button class="btn btn-sm btn-outline" data-filter="unanswered">⬜ Belum</button>
+            </div>
+            <div id="reviewList"></div>
+        </div>
+
+        <!-- ===== PANEL HASIL ===== -->
+        <div class="card hidden" id="resultPanel">
+            <div class="text-center">
+                <div style="font-size:3rem;margin-bottom:8px;">🏆</div>
+                <div class="result-score" id="finalScore">0%</div>
+                <div class="result-detail">
+                    ✅ Benar: <span id="finalCorrect">0</span> &nbsp;|&nbsp; ❌ Salah: <span id="finalWrong">0</span>
+                </div>
+                <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                    <button class="btn btn-primary" id="retryWrongBtn">🔁 Kerjakan Ulang Soal Salah</button>
+                    <button class="btn btn-outline" id="resultResetBtn">🔄 Mulai Ulang</button>
+                </div>
+                <div style="margin-top:20px;">
+                    <button class="btn btn-outline" id="resultReviewBtn">📋 Lihat Review</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ============================================================
+        //  1.  DATA SOAL (120 SOAL) – PERUBAHAN DAN MASALAH SOSIAL
+        // ============================================================
+        const MASTER_QUESTIONS = [{
+            id: 1,
+            question: "Menurut Parson, perubahan-perubahan di dalam sistem sosial pada umumnya terjadi ....",
+            options: [
+                "A. secara gradual",
+                "B. melalui sebuah proses penyesuaian-penyesuaian",
+                "C. terjadi secara revolusioner",
+                "D. 1) dan 2) saja"
+            ],
+            correct: 3,
+            explanation: "Parson menyatakan perubahan sosial terjadi secara gradual melalui proses penyesuaian."
+        }, {
+            id: 2,
+            question: "Dalam perspektif struktural fungsional, pengertian sistem diartikan sebagai suatu himpunan atau kesatuan dari unsur-unsur yang saling berhubungan selama jangka waktu....",
+            options: [
+                "A. tak tertentu dan atas dasar pola tertentu",
+                "B. tak tertentu dan atas dasar pola tak tertentu",
+                "C. tertentu dan atas dasar pola tertentu",
+                "D. tertentu dan atas dasar pola tak tertentu"
+            ],
+            correct: 2,
+            explanation: "Sistem dalam struktural fungsional adalah himpunan unsur yang saling berhubungan dalam jangka waktu tertentu dan atas dasar pola tertentu."
+        }, {
+            id: 3,
+            question: "Nasikun menjelaskan bahwa fungsionalisme melihat masyarakat yang menganalogikan masyarakat dengan....",
+            options: ["A. organisasi", "B. birokrasi", "C. organisme biologis", "D. struktur ban berjalan"],
+            correct: 2,
+            explanation: "Fungsionalisme menganalogikan masyarakat dengan organisme biologis."
+        }, {
+            id: 4,
+            question: "Menurut Parson, sub sistem tindakan yang lebih rendah memberikan .... bagi sub sistem tindakan pada hierarki yang lebih tinggi.",
+            options: ["A. pertukaran informasi", "B. kondisi energi", "C. pemberian wewenang", "D. pengaturan"],
+            correct: 1,
+            explanation: "Sub sistem yang lebih rendah memberikan kondisi energi bagi yang lebih tinggi."
+        }, {
+            id: 5,
+            question: "Menurut Parson, sub sistem tindakan yang memiliki hierarki tinggi mengendalikan sub sistem tindakan yang lebih rendah di dalam hal....",
+            options: ["A. pertukaran informasi", "B. kondisi energi", "C. pemberian wewenang", "D. pengaturan"],
+            correct: 0,
+            explanation: "Hierarki tinggi mengendalikan yang lebih rendah melalui pertukaran informasi."
+        }, {
+            id: 6,
+            question: "Seluruh bentuk sosial dan kebudayaan yang sudah baku memiliki fungsi-fungsi positif. Pernyataan ini menggambarkan postulat dalam struktural fungsional yaitu....",
+            options: ["A. indispensability", "B. fungsionalisme universal", "C. konsistensi internal", "D. goal attainment"],
+            correct: 1,
+            explanation: "Fungsionalisme universal menyatakan semua bentuk sosial dan budaya memiliki fungsi positif."
+        }, {
+            id: 7,
+            question: "Dahrendorf menyatakan bahwa pendekatan konflik berpangkal pada beberapa anggapan dasar yaitu....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Dahrendorf: masyarakat selalu dalam proses perubahan, mengandung konflik, dan setiap unsur menyumbang disintegrasi."
+        }, {
+            id: 8,
+            question: "Dalam perspektif konflik, konflik pada hakikatnya dapat dilihat dari beberapa dimensi, yaitu....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Dimensi konflik: perilaku, sikap, dan konteks."
+        }, {
+            id: 9,
+            question: "Perspektif konflik melihat bahwa seseorang mempunyai kekuasaan karena memiliki....",
+            options: [
+                "A. karakteristik personal yang kuat",
+                "B. kualitas pribadi yang lebih dari yang lain",
+                "C. kemampuan untuk mengontrol alat produksi",
+                "D. wewenang yang didapat sejak lahir"
+            ],
+            correct: 2,
+            explanation: "Perspektif konflik melihat kekuasaan berasal dari kemampuan mengontrol alat produksi."
+        }, {
+            id: 10,
+            question: "Menurut Kusnadi, terjadinya konflik melalui tahapan....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Tahap konflik menurut Kusnadi: disorganisasi, disintegrasi, disorientasi."
+        }, {
+            id: 11,
+            question: "Konflik yang tidak terlihat dan terlembagakan dalam struktur masyarakat seperti ekonomi, sosial, dan politik menunjukkan adanya konflik berdasarkan dimensi....",
+            options: ["A. perilaku", "B. sikap", "C. konteks", "D. ekonomi"],
+            correct: 2,
+            explanation: "Konflik yang terlembagakan dalam struktur menunjukkan dimensi konteks."
+        }, {
+            id: 12,
+            question: "Kurangnya toleransi di dalam masyarakat menunjukkan adanya konflik berdasarkan dimensi....",
+            options: ["A. perilaku", "B. sikap", "C. konteks", "D. ekonomi"],
+            correct: 1,
+            explanation: "Kurang toleransi merupakan konflik pada dimensi sikap."
+        }, {
+            id: 13,
+            question: "Blumer menjelaskan bahwa interaksionisme simbolik bertumpu pada premis berikut ini....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Tiga premis Blumer: manusia bertindak berdasarkan makna, makna dari interaksi sosial, makna disempurnakan dalam interaksi."
+        }, {
+            id: 14,
+            question: "Perspektif interaksionisme simbolik memperhatikan interaksi yang terjadi antara individu dan kelompok dengan menggunakan....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Interaksionisme simbolik menggunakan simbol, isyarat, dan kata-kata lisan."
+        }, {
+            id: 15,
+            question: "Syarat yang dibutuhkan untuk menciptakan sebuah interaksi sosial yaitu adanya....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Interaksi sosial membutuhkan komunikasi dan kontak sosial."
+        }, {
+            id: 16,
+            question: "Perspektif interaksionisme simbolik melihat masyarakat sebagai....",
+            options: [
+                "A. sejumlah besar tindakan bersama atau kejadian",
+                "B. suatu sistem yang sengaja diciptakan",
+                "C. mekanisme kontrol sosial",
+                "D. wadah bagi konflik untuk tumbuh"
+            ],
+            correct: 0,
+            explanation: "Interaksionisme simbolik melihat masyarakat sebagai tindakan bersama."
+        }, {
+            id: 17,
+            question: "Seseorang menjadi efektif ketika dapat menjalin sebuah komunikasi satu sama lain dengan syarat telah....",
+            options: [
+                "A. 1) menemukan simbol",
+                "B. 2) menyepakati simbol",
+                "C. 3) mendistribusikan simbol",
+                "D. 1) dan 3) saja"
+            ],
+            correct: 1,
+            explanation: "Komunikasi efektif membutuhkan kesepakatan simbol."
+        }, {
+            id: 18,
+            question: "Mead melihat berbagai proses mental sebagai bagian dari proses sosial yang lebih besar yang termasuk di dalamnya antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Proses mental menurut Mead: kecerdasan reflektif, kesadaran, dan pikiran."
+        }, {
+            id: 19,
+            question: "Durkheim beranggapan bahwa sistem pelapisan dan kelas sosial dalam masyarakat merupakan bentuk....",
+            options: ["A. struktur sosial", "B. lembaga sosial", "C. institusi sosial", "D. komunitas sosial"],
+            correct: 0,
+            explanation: "Pelapisan dan kelas sosial adalah struktur sosial menurut Durkheim."
+        }, {
+            id: 20,
+            question: "Tokoh yang dikenal sebagai bapak sosiologi adalah....",
+            options: ["A. Durkheim", "B. Comte", "C. Weber", "D. Marx"],
+            correct: 1,
+            explanation: "Auguste Comte dikenal sebagai bapak sosiologi."
+        }, {
+            id: 21,
+            question: "Menurut Durkheim, sifat dasar dari fakta sosial yang membedakan sosiologi dengan psikologi adalah....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Fakta sosial bersifat eksternal dan umum, membedakan sosiologi dari psikologi."
+        }, {
+            id: 22,
+            question: "Jika individu meninggal, fakta sosial tidak hilang dan tetap ada dalam masyarakat. Kalimat ini menjelaskan salah satu syarat sesuatu disebut fakta sosial, yaitu....",
+            options: ["A. umum", "B. memaksa", "C. eksternal", "D. langsung"],
+            correct: 2,
+            explanation: "Fakta sosial bersifat eksternal, tetap ada meski individu meninggal."
+        }, {
+            id: 23,
+            question: "Menurut Ritzer, cara terbaik untuk mempelajari fakta sosial adalah dengan metode....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 1,
+            explanation: "Metode historis dan komparatif untuk mempelajari fakta sosial."
+        }, {
+            id: 24,
+            question: "Metode yang dianggap tepat digunakan bagi penganut paradigma fakta sosial adalah....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Kuesioner, observasi, dan interview digunakan dalam paradigma fakta sosial."
+        }, {
+            id: 25,
+            question: "Metode yang banyak digunakan dalam paradigma definisi sosial adalah....",
+            options: ["A. observasi", "B. interview", "C. kuesioner", "D. eksperimen"],
+            correct: 1,
+            explanation: "Interview adalah metode utama dalam paradigma definisi sosial."
+        }, {
+            id: 26,
+            question: "Weber menyatakan bahwa suatu tindakan disebut tindakan sosial apabila tindakan tersebut dilakukan dengan....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Tindakan sosial mempertimbangkan dan berorientasi pada perilaku orang lain."
+        }, {
+            id: 27,
+            question: "Penganut paradigma definisi sosial harus mampu mengambil kesimpulan terhadap sesuatu yang timbul dari kekuatan .... dari gejala yang diamatinya.",
+            options: ["A. intersubyektif", "B. intrasubyektif", "C. ekstrasubjektif", "D. intersubjektif dan ekstrasubjektif"],
+            correct: 0,
+            explanation: "Paradigma definisi sosial menggunakan kekuatan intersubyektif."
+        }, {
+            id: 28,
+            question: "Pernyataan yang benar adalah teori fenomenologi bekerja dengan cara berpikir....",
+            options: [
+                "A. deduktif, sedangkan interaksionisme simbolik berpikir secara induktif",
+                "B. induktif, sedangkan interaksionisme simbolik berpikir secara deduktif",
+                "C. deduktif, demikian pula interaksionisme simbolik",
+                "D. induktif, demikian pula interaksionisme simbolik"
+            ],
+            correct: 0,
+            explanation: "Fenomenologi deduktif, interaksionisme simbolik induktif."
+        }, {
+            id: 29,
+            question: "Teori yang diilhami oleh sifat insting binatang adalah teori....",
+            options: ["A. aksi", "B. fenomenologi", "C. interaksionisme simbolik", "D. konflik"],
+            correct: 0,
+            explanation: "Teori aksi diilhami oleh sifat insting binatang."
+        }, {
+            id: 30,
+            question: "Teori yang bernaung dalam paradigma definisi sosial antara lain adalah teori....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Teori aksi, interaksionisme simbolik, dan fenomenologi dalam paradigma definisi sosial."
+        }, {
+            id: 31,
+            question: "Dalam hubungan antara individu dengan lingkungannya, Skinner membagi lingkungan menjadi objek....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 1,
+            explanation: "Lingkungan dibagi menjadi objek sosial dan non sosial."
+        }, {
+            id: 32,
+            question: "Dalam upaya memahami masyarakat secara benar, Skinner lebih menekankan pada....",
+            options: ["A. struktur sosial", "B. lembaga sosial", "C. interaksi antar individu", "D. aktivitas harian individu"],
+            correct: 3,
+            explanation: "Skinner menekankan pada aktivitas harian individu."
+        }, {
+            id: 33,
+            question: "Pernyataan yang benar terkait paradigma definisi sosial dan perilaku sosial yaitu dalam paradigma definisi sosial aktor adalah....",
+            options: [
+                "A. dinamis dan mempunyai kekuatan kreatif di dalam interaksi, sedangkan dalam paradigma perilaku sosial individu kurang sekali memiliki kebebasan",
+                "B. kurang sekali memiliki kebebasan, sedangkan dalam paradigma perilaku sosial individu dinamis dan mempunyai kekuatan kreatif",
+                "C. dinamis dan mempunyai kekuatan kreatif, demikian pula dalam paradigma perilaku sosial",
+                "D. kurang sekali memiliki kebebasan, demikian pula dalam paradigma perilaku sosial"
+            ],
+            correct: 0,
+            explanation: "Definisi sosial: aktor dinamis dan kreatif; perilaku sosial: individu kurang bebas."
+        }, {
+            id: 34,
+            question: "Menurut teori perilaku sosial, di antara sistem fisika dan sistem metafisika terdapat beberapa subsistem, di antaranya subsistem....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Subsistem: sosial, kepribadian, dan biologi."
+        }, {
+            id: 35,
+            question: "Dalil yang berlaku dalam teori perilaku sosial adalah semakin ke bawah mendekati sistem metafisika, maka tindakan manusia membutuhkan....",
+            options: ["A. informasi", "B. energi", "C. budaya", "D. ekonomi"],
+            correct: 0,
+            explanation: "Semakin ke bawah sistem metafisika, tindakan manusia membutuhkan informasi."
+        }, {
+            id: 36,
+            question: "Teori perilaku sosial merupakan salah satu teori yang dikembangkan dalam paradigma....",
+            options: ["A. fakta sosial", "B. definisi sosial", "C. perilaku sosial", "D. kontrol sosial"],
+            correct: 2,
+            explanation: "Teori perilaku sosial termasuk paradigma perilaku sosial."
+        }, {
+            id: 37,
+            question: "Dalam perspektif individual terdapat 4 prinsip pembentukan sosialisasi, antara lain interaksi....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Interaksi pada masa anak-anak, dalam kelompok primer, dan dengan orang yang memiliki kedekatan emosional."
+        }, {
+            id: 38,
+            question: "Beeghley berpandapat bahwa untuk mengidentifikasi dan menganalisis masalah sosial dalam kehidupan sosial kemasyarakatan dapat menggunakan perspektif....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Perspektif individual, sistem, dan struktural."
+        }, {
+            id: 39,
+            question: "Menurut Soekanto, masalah sosial dapat timbul dari kekurangan yang ada dalam diri manusia atau kelompok sosial yang bersumber pada faktor-faktor....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Faktor ekonomis, biologis, dan biopsikologis."
+        }, {
+            id: 40,
+            question: "Teori tindakan beralasan dari Icek Ajzen dan Martin Fishbein menjelaskan bahwa sikap memengaruhi perilaku melalui suatu proses pengambilan keputusan yang teliti dan beralasan sehingga berdampak pada....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Perilaku ditentukan oleh sikap spesifik, norma subjektif, dan intensi/niat."
+        }, {
+            id: 41,
+            question: "Manusia dikatakan sebagai makhluk sosial karena beberapa alasan, antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Manusia tunduk pada aturan, mengharapkan penilaian, dan butuh interaksi."
+        }, {
+            id: 42,
+            question: "Proses maintenance learning terjadi di dalam teori sosialisasi....",
+            options: ["A. pasif", "B. aktif", "C. radikal", "D. formal"],
+            correct: 0,
+            explanation: "Maintenance learning terjadi dalam sosialisasi pasif."
+        }, {
+            id: 43,
+            question: "Pengertian living organism yang oleh Salim digunakan untuk menganalogikan masyarakat meliputi....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "The whole structure, consist of part, interrelation."
+        }, {
+            id: 44,
+            question: "Saling bergantung antara hubungan berbagai subsistem atau organisme sosial, oleh Salim disebut sebagai....",
+            options: [
+                "A. the whole structure",
+                "B. consist of part",
+                "C. highly interdependent",
+                "D. as a whole producing certain unique product"
+            ],
+            correct: 2,
+            explanation: "Highly interdependent menggambarkan saling ketergantungan subsistem."
+        }, {
+            id: 45,
+            question: "Masing-masing subsistem memiliki kontribusi fungsi tersendiri sehingga membentuk jalinan fungsi tersendiri, oleh Salim disebut sebagai....",
+            options: [
+                "A. the whole structure",
+                "B. consist of part",
+                "C. highly interdependent",
+                "D. as a whole producing certain unique product"
+            ],
+            correct: 3,
+            explanation: "As a whole producing certain unique product."
+        }, {
+            id: 46,
+            question: "Orientasi yang menjadi latar belakang tindakan manusia menurut Talcott Parsons adalah orientasi....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 0,
+            explanation: "Orientasi motivasional dan nilai."
+        }, {
+            id: 47,
+            question: "Orientasi yang berkaitan dengan keinginan individu untuk memperbesar kepuasan dan mengurangi kekecewaannya merupakan orientasi....",
+            options: ["A. ekonomi", "B. nilai", "C. motivasional", "D. sosial"],
+            correct: 2,
+            explanation: "Orientasi motivasional berkaitan dengan kepuasan dan pengurangan kekecewaan."
+        }, {
+            id: 48,
+            question: "Bagi Talcott Parsons, dalam sistem sosial masalah terpenting adalah soal integrasi, sehingga komponen subsistem sosial yang paling utama adalah sistem....",
+            options: ["A. kepribadian", "B. budaya", "C. sosial", "D. ekonomi"],
+            correct: 1,
+            explanation: "Sistem budaya adalah komponen utama untuk integrasi."
+        }, {
+            id: 49,
+            question: "Menurut Parsons, norma merupakan simbol dari....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Norma adalah simbol loyalitas ideologis dan afiliasi kelompok."
+        }, {
+            id: 50,
+            question: "Menurut Soekanto, empty shell family merujuk pada pengertian tentang....",
+            options: [
+                "A. putusnya perkawinan karena perceraian",
+                "B. adanya kekurangan dalam keluarga tersebut, yaitu dalam hal komunikasi antaranggota keluarganya",
+                "C. krisis keluarga karena salah satu yang bertindak sebagai kepala keluarga meninggalkan rumah",
+                "D. unit keluarga yang tidak lengkap karena hubungan di luar perkawinan"
+            ],
+            correct: 1,
+            explanation: "Empty shell family adalah keluarga dengan kekurangan komunikasi antaranggota."
+        }, {
+            id: 51,
+            question: "Menurut Pierre Van den Berghe, salah satu sifat dasar masyarakat majemuk adalah memiliki struktur sosial yang....",
+            options: [
+                "A. terpusat ke dalam lembaga-lembaga yang bersifat nonkomplementer",
+                "B. terpusat ke dalam lembaga-lembaga yang bersifat komplementer",
+                "C. terbagi-bagi ke dalam lembaga-lembaga yang bersifat nonkomplementer",
+                "D. terbagi-bagi ke dalam lembaga-lembaga yang bersifat komplementer"
+            ],
+            correct: 2,
+            explanation: "Masyarakat majemuk memiliki struktur sosial terbagi dalam lembaga nonkomplementer."
+        }, {
+            id: 52,
+            question: "Menurut Merton, bentuk usaha penyelarasan yang dilakukan individu bisa berupa....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Rebellion, ritualism, dan retreatism adalah bentuk penyelarasan menurut Merton."
+        }, {
+            id: 53,
+            question: "Menurut Merton, individu tidak menerima perubahan, namun sekaligus menginginkan adanya nilai-nilai dan cara-cara baru yang dilembagakan, maka bentuk usaha penyelarasan yang dilakukan adalah....",
+            options: ["A. conformity", "B. rebellion", "C. ritualism", "D. retreatism"],
+            correct: 1,
+            explanation: "Rebellion: menolak perubahan tapi menginginkan nilai dan cara baru."
+        }, {
+            id: 54,
+            question: "Menurut Merton, ketika tekanan terlampau diletakkan pada nilai-nilai sosial budaya yang berlaku, sedangkan masyarakat merasakan bahwa cara atau kaidah untuk mencapai tujuan tersebut kurang memadai, maka bentuk usaha penyelarasan yang dilakukan adalah....",
+            options: ["A. conformity", "B. innovation", "C. ritualism", "D. retreatism"],
+            correct: 1,
+            explanation: "Innovation: menerima tujuan tapi menggunakan cara baru."
+        }, {
+            id: 55,
+            question: "Menurut Parillo, suatu masalah bisa disebut masalah sosial apabila....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Masalah sosial: berlangsung lama, menimbulkan kerugian, dan memerlukan pemecahan."
+        }, {
+            id: 56,
+            question: "Beberapa bentuk rekayasa sosial (social engineering) untuk mengatasi masalah sosial antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Aksi sosial, kebijakan sosial, dan perencanaan sosial."
+        }, {
+            id: 57,
+            question: "Unsur penting yang terkait dengan definisi masalah sosial adalah....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Situasi yang dinyatakan, sejumlah orang yang signifikan, dan kebutuhan tindakan pemecahan."
+        }, {
+            id: 58,
+            question: "Menurut Jalaluddin, pemecahan masalah sosial yang hanya menyerahkan pada takdir Tuhan setiap ada masalah merupakan kesalahpahaman mengenai masalah sosial dalam hal....",
+            options: [
+                "A. over generalisasi",
+                "B. hubungan kausalitas yang semu",
+                "C. mencari penjelasan pada sesuatu yang abstrak",
+                "D. mengandalkan pada otoritas yang didasarkan pada penafsiran sendiri"
+            ],
+            correct: 2,
+            explanation: "Menyerahkan pada takdir adalah mencari penjelasan pada sesuatu yang abstrak."
+        }, {
+            id: 59,
+            question: "Menurut Jalaluddin, pemecahan masalah sosial yang hanya dilihat dari permukaannya saja sehingga solusi yang ditawarkan tidak dapat mengatasi masalah secara tuntas merupakan kesalahpahaman mengenai masalah sosial dalam hal....",
+            options: [
+                "A. over generalisasi",
+                "B. hubungan kausalitas yang semu",
+                "C. mencari penjelasan pada sesuatu yang abstrak",
+                "D. mengandalkan pada otoritas yang didasarkan pada penafsiran sendiri"
+            ],
+            correct: 1,
+            explanation: "Melihat permukaan saja adalah hubungan kausalitas yang semu."
+        }, {
+            id: 60,
+            question: "Menurut Jalaluddin, ketika masing-masing pihak merasa benar berdasarkan apa yang ditafsirkan sendiri merupakan kesalahpahaman mengenai masalah sosial dalam hal....",
+            options: [
+                "A. over generalisasi",
+                "B. hubungan kausalitas yang semu",
+                "C. mencari penjelasan pada sesuatu yang abstrak",
+                "D. mengandalkan pada otoritas yang didasarkan pada penafsiran sendiri"
+            ],
+            correct: 3,
+            explanation: "Masing-masing pihak merasa benar berdasarkan penafsiran sendiri."
+        }, {
+            id: 61,
+            question: "Ketidakmampuan manusia untuk beradaptasi dengan teknologi, menurut Abdulsyani merupakan penyebab masalah sosial yang berasal dari faktor....",
+            options: ["A. ekonomi", "B. sosial", "C. budaya", "D. psikologis"],
+            correct: 2,
+            explanation: "Ketidakmampuan adaptasi teknologi berasal dari faktor budaya."
+        }, {
+            id: 62,
+            question: "Menurut Abdulsyani, masalah sosial dapat timbul karena adanya kekurangan-kekurangan dalam diri manusia atau kelompok masyarakat yang bersumber dari faktor....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Faktor biologis, budaya, dan psikologis."
+        }, {
+            id: 63,
+            question: "Banyaknya jumlah penduduk yang secara otomatis cepat menipiskan persediaan sumber daya, menurut Daldjoeni merupakan penyebab masalah sosial yang berasal dari faktor....",
+            options: ["A. ekonomi", "B. alam", "C. biologis", "D. sosial"],
+            correct: 1,
+            explanation: "Jumlah penduduk menipiskan sumber daya berasal dari faktor alam."
+        }, {
+            id: 64,
+            question: "Dilihat dari sumbernya, masalah sosial dapat dibedakan menjadi masalah sosial yang disebabkan karena faktor-faktor....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Disebabkan oleh kelompok sosial, melekat pada individu, dan tidak berfungsinya sistem."
+        }, {
+            id: 65,
+            question: "Ada masalah sosial, akan tetapi tidak disadari oleh anggota masyarakat yang bersangkutan merupakan masalah sosial....",
+            options: ["A. laten", "B. umum", "C. endemik", "D. antagonis"],
+            correct: 0,
+            explanation: "Masalah sosial laten: tidak disadari oleh masyarakat."
+        }, {
+            id: 66,
+            question: "Coleman dan Cressey menjelaskan masalah sosial ke dalam beberapa klasifikasi, antara lain masalah sosial yang....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Berbasis ketimpangan, terjadi pada institusi sosial, dan berupa penyimpangan."
+        }, {
+            id: 67,
+            question: "Langkah yang dilakukan untuk membuka kesadaran dan keyakinan bahwa dalam masyarakat terkandung gejala masalah sosial yang harus diselesaikan dalam penanganan masalah sosial termasuk dalam tahap....",
+            options: ["A. identifikasi", "B. diagnosis", "C. pemantapan", "D. treatment"],
+            correct: 0,
+            explanation: "Identifikasi adalah tahap membuka kesadaran adanya masalah sosial."
+        }, {
+            id: 68,
+            question: "Pendekatan yang bisa digunakan untuk mencari sumber masalah dalam tahap diagnosis adalah level....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Level sistemik, individual, dan kelompok."
+        }, {
+            id: 69,
+            question: "Upaya pemecahan masalah sosial dalam penanganan masalah sosial termasuk dalam tahap....",
+            options: ["A. identifikasi", "B. diagnosis", "C. pemantapan", "D. treatment"],
+            correct: 3,
+            explanation: "Treatment adalah tahap pemecahan masalah sosial."
+        }, {
+            id: 70,
+            question: "Asumsi bahwa dalam diri penyandang masalah sosial terkandung potensi untuk berubah menuju kondisi yang normal terdapat dalam penanganan masalah sosial yang bersifat....",
+            options: ["A. rehabilitatif", "B. preventif", "C. developmental", "D. reaktif"],
+            correct: 0,
+            explanation: "Rehabilitatif berasumsi ada potensi berubah dalam diri penyandang masalah."
+        }, {
+            id: 71,
+            question: "Strategi yang biasanya dilakukan dengan mengontrol dan memberikan arah pada proses sosialisasi pada level individu ada dalam penanganan masalah sosial yang bersifat....",
+            options: ["A. rehabilitatif", "B. preventif", "C. developmental", "D. reaktif"],
+            correct: 1,
+            explanation: "Preventif mengontrol dan mengarahkan proses sosialisasi."
+        }, {
+            id: 72,
+            question: "Secara sederhana, mekanisme penanganan masalah sosial dapat diklasifikasikan menjadi....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Rehabilitatif, preventif, dan developmental."
+        }, {
+            id: 73,
+            question: "Pendekatan hukum dalam mengatasi masalah sosial bisa dilakukan dengan menggunakan langkah....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 0,
+            explanation: "Pendekatan hukum menggunakan langkah rehabilitatif dan preventif."
+        }, {
+            id: 74,
+            question: "Konsep ekologi manusia diperkenalkan dalam sosiologi oleh beberapa ilmuwan, antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Robert E. Park dan Ernest W. Burgess."
+        }, {
+            id: 75,
+            question: "Penyelesaian masalah kependudukan tidak hanya melalui program dari BKKBN, tetapi dapat pula dipecahkan melalui program transmigrasi. Hal tersebut merupakan salah satu contoh penanganan masalah dilihat dari pendekatan....",
+            options: ["A. interdisipliner", "B. pertumbuhan eksponensial", "C. ekologi", "D. hukum"],
+            correct: 2,
+            explanation: "Transmigrasi adalah pendekatan ekologi."
+        }, {
+            id: 76,
+            question: "Perubahan sosial terjadi ketika ada perubahan pada struktur sosial, yaitu....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Perubahan pada pola tingkah laku, status dan peran, serta nilai-nilai."
+        }, {
+            id: 77,
+            question: "Kebijakan-kebijakan dari pemerintah yang sering kali tidak memihak kepada para petani sehingga menimbulkan masalah sosial. Hal ini merupakan penyebab masalah sosial dilihat dari faktor....",
+            options: ["A. struktural", "B. kultural", "C. sektoral", "D. eksternal"],
+            correct: 0,
+            explanation: "Kebijakan tidak memihak petani adalah faktor struktural."
+        }, {
+            id: 78,
+            question: "Sistem ekonomi neoliberalisme yang diterapkan di Indonesia telah menyebabkan para petani, nelayan, dan pekerja sektor informal terjerat dan sulit keluar dari kemiskinan. Hal ini merupakan penyebab masalah sosial dilihat dari faktor....",
+            options: ["A. struktural", "B. kultural", "C. sektoral", "D. eksternal"],
+            correct: 0,
+            explanation: "Neoliberalisme adalah faktor struktural."
+        }, {
+            id: 79,
+            question: "Kemiskinan yang disebabkan rendahnya kapabilitas masyarakat, misalnya rasa malas dan tidak produktif, merupakan penyebab masalah sosial dilihat dari faktor....",
+            options: ["A. struktural", "B. kultural", "C. sektoral", "D. internal"],
+            correct: 1,
+            explanation: "Rendahnya kapabilitas seperti malas adalah faktor kultural."
+        }, {
+            id: 80,
+            question: "Ketika individu tunduk pada keinginan kelompok, menurut Merton termasuk dalam pola adaptasi yang....",
+            options: ["A. kompromisme", "B. ritualisme", "C. inovasi", "D. pelarian"],
+            correct: 0,
+            explanation: "Tunduk pada keinginan kelompok adalah kompromisme."
+        }, {
+            id: 81,
+            question: "Timbulnya masalah sosial dipicu karena adanya ketidaksesuaian pelaksanaan nilai, norma, dan kepentingan sosial akibat adanya proses perubahan sosial dan pola masyarakat heterogen atau multikultural. Hal ini merupakan penyebab masalah sosial dilihat dari faktor....",
+            options: ["A. struktural", "B. kultural", "C. sektoral", "D. eksternal"],
+            correct: 1,
+            explanation: "Ketidaksesuaian nilai dan norma adalah faktor kultural."
+        }, {
+            id: 82,
+            question: "Secara umum kemiskinan merupakan masalah universal yang dihadapi oleh masyarakat di dunia, namun kemiskinan juga dipahami bersifat....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Kemiskinan bersifat space, time, dan specific."
+        }, {
+            id: 83,
+            question: "Ciri-ciri masyarakat miskin menurut Tim Crescerit, yaitu....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Tidak punya akses politik, tersingkir secara sosial, rendahnya SDM."
+        }, {
+            id: 84,
+            question: "Berdasarkan studi SMERU, kriteria yang menandai kemiskinan antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Ketidakmampuan konsumsi dasar, cacat fisik/mental, dan ketidakberuntungan sosial."
+        }, {
+            id: 85,
+            question: "Perilaku konsumtif yang dimiliki oleh para petani pada saat panen, namun kemudian berutang untuk memenuhi kebutuhan hidup ketika tidak memasuki musim panen merupakan salah satu bentuk kemiskinan....",
+            options: ["A. natural", "B. struktural", "C. kultural", "D. relatif"],
+            correct: 2,
+            explanation: "Perilaku konsumtif petani adalah kemiskinan kultural."
+        }, {
+            id: 86,
+            question: "Untuk memenuhi kebutuhan upacara adat, tidak jarang masyarakat sampai berutang asalkan upacara adat tersebut terlaksana. Kondisi ini merupakan salah satu bentuk kemiskinan....",
+            options: ["A. natural", "B. struktural", "C. kultural", "D. relatif"],
+            correct: 2,
+            explanation: "Berutang untuk upacara adat adalah kemiskinan kultural."
+        }, {
+            id: 87,
+            question: "Kondisi miskin yang disebabkan oleh tatanan kehidupan yang tidak menguntungkan merupakan bentuk kemiskinan....",
+            options: ["A. absolut", "B. relatif", "C. struktural", "D. kultural"],
+            correct: 2,
+            explanation: "Tatanan kehidupan tidak menguntungkan adalah kemiskinan struktural."
+        }, {
+            id: 88,
+            question: "Di Pulau Jawa, terdapat kecenderungan bahwa alasan utama terjadinya urbanisasi adalah masalah....",
+            options: ["A. pekerjaan", "B. keluarga", "C. pendidikan", "D. tempat tinggal"],
+            correct: 0,
+            explanation: "Urbanisasi di Jawa terutama karena masalah pekerjaan."
+        }, {
+            id: 89,
+            question: "Dalam konteks mencari pekerjaan, urbanisasi yang terjadi di Indonesia merupakan urbanisasi....",
+            options: ["A. prematur", "B. metropolis", "C. paksaan", "D. primer"],
+            correct: 0,
+            explanation: "Urbanisasi karena mencari pekerjaan adalah urbanisasi prematur."
+        }, {
+            id: 90,
+            question: "Di luar Pulau Jawa, terdapat kecenderungan bahwa alasan utama terjadinya urbanisasi adalah masalah....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Pekerjaan, keluarga, dan pendidikan."
+        }, {
+            id: 91,
+            question: "Santrock menyatakan bahwa fase-fase remaja sama seperti perkembangan anak, yaitu adanya faktor-faktor....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Faktor biologis dan lingkungan."
+        }, {
+            id: 92,
+            question: "Hurlock menempatkan remaja dalam tahapan perkembangan yang di dalamnya terjadi kematangan....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 2,
+            explanation: "Kematangan sosial dan fisik."
+        }, {
+            id: 93,
+            question: "Menurut Hall, sensitivitas terhadap lingkungan sosial akan dimiliki oleh manusia yang berada dalam tahap....",
+            options: ["A. balita", "B. anak-anak", "C. remaja", "D. dewasa"],
+            correct: 2,
+            explanation: "Sensitivitas lingkungan sosial muncul pada masa remaja."
+        }, {
+            id: 94,
+            question: "Individu yang tengah mengalami banyak perubahan menuju pubertas dikelompokkan ke dalam....",
+            options: ["A. remaja awal", "B. semi remaja", "C. remaja", "D. pra remaja"],
+            correct: 0,
+            explanation: "Perubahan menuju pubertas terjadi pada remaja awal."
+        }, {
+            id: 95,
+            question: "Munculnya minat yang lebih nyata terhadap karier, pacaran, dan eksplorasi identitas dikelompokkan ke dalam....",
+            options: ["A. remaja akhir", "B. semi remaja", "C. remaja", "D. pra remaja"],
+            correct: 0,
+            explanation: "Minat karier, pacaran, dan eksplorasi identitas pada remaja akhir."
+        }, {
+            id: 96,
+            question: "Tokoh yang mencirikan masa remaja dengan continuity dan discontinuity adalah....",
+            options: ["A. Grinder", "B. Hurlock", "C. Santrock", "D. Papalia"],
+            correct: 0,
+            explanation: "Grinder mencirikan remaja dengan continuity dan discontinuity."
+        }, {
+            id: 97,
+            question: "Pendekatan yang menjelaskan bahwa kenakalan yang dialami oleh remaja memiliki perbedaan secara gender adalah pendekatan....",
+            options: [
+                "A. rational choice",
+                "B. social disorganization",
+                "C. labelling",
+                "D. male phenomenon"
+            ],
+            correct: 3,
+            explanation: "Male phenomenon menjelaskan perbedaan gender dalam kenakalan remaja."
+        }, {
+            id: 98,
+            question: "Pendekatan yang menjelaskan bahwa pergaulan menjadi faktor utama untuk membentuk karakter individu adalah pendekatan....",
+            options: [
+                "A. rational choice",
+                "B. social disorganization",
+                "C. labelling",
+                "D. differential association"
+            ],
+            correct: 3,
+            explanation: "Differential association: pergaulan membentuk karakter."
+        }, {
+            id: 99,
+            question: "Pendekatan yang menjelaskan bahwa kenakalan yang dialami oleh remaja merupakan hasil dari anggapan atau label yang diberikan oleh orang-orang di sekitarnya adalah pendekatan....",
+            options: [
+                "A. rational choice",
+                "B. social disorganization",
+                "C. labelling",
+                "D. male phenomenon"
+            ],
+            correct: 2,
+            explanation: "Labelling: kenakalan akibat label dari orang sekitar."
+        }, {
+            id: 100,
+            question: "Teori yang menjelaskan bahwa semakin tua seseorang maka ia akan semakin mampu memelihara hubungan fisik, sosial, dan emosionalnya adalah teori....",
+            options: [
+                "A. disengagement",
+                "B. activity",
+                "C. social phenomenon",
+                "D. rational choice"
+            ],
+            correct: 1,
+            explanation: "Activity theory: semakin tua semakin mampu memelihara hubungan."
+        }, {
+            id: 101,
+            question: "Menurut Prawiro Husodo, lansia sering kali dicirikan dengan menurunnya beberapa aspek, antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Penurunan psikologis, psikis, dan fungsi sensori motorik."
+        }, {
+            id: 102,
+            question: "Kerusakan umum yakni fungsi intelektual, misalnya mengingat, yang mengganggu fungsi sosial bermasyarakat dan berinteraksi dengan orang lain disebut....",
+            options: ["A. demensia", "B. delirium", "C. depresi", "D. decompensatio cordis"],
+            correct: 0,
+            explanation: "Demensia adalah kerusakan fungsi intelektual."
+        }, {
+            id: 103,
+            question: "Secara psikologis, lansia ditandai dengan penurunan....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Penurunan daya ingat, intelektual, dan psikomotorik."
+        }, {
+            id: 104,
+            question: "Penurunan daya ingat dan psikomotorik merupakan karakteristik sosial lansia dilihat dari kondisi....",
+            options: ["A. fisik", "B. kognitif", "C. psikososial", "D. ekonomi"],
+            correct: 1,
+            explanation: "Penurunan daya ingat dan psikomotorik adalah kondisi kognitif."
+        }, {
+            id: 105,
+            question: "Demensia dan delirium merupakan kerusakan yang dialami lansia, menjadi karakteristik sosial lansia dilihat dari kondisi....",
+            options: ["A. fisik", "B. kognitif", "C. psikososial", "D. ekonomi"],
+            correct: 1,
+            explanation: "Demensia dan delirium adalah kondisi kognitif."
+        }, {
+            id: 106,
+            question: "Karakteristik panti yang ditemukan di Indonesia yaitu panti yang didirikan oleh....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Didirikan masyarakat dengan anggaran masyarakat, masyarakat dengan anggaran pemerintah, dan pemerintah."
+        }, {
+            id: 107,
+            question: "Industrialisasi dan peningkatan partisipasi kerja perempuan menempatkan lansia pada posisi yang rentan karena....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 1,
+            explanation: "Hilangnya konsep keluarga inti dan hilangnya sumber daya perawatan."
+        }, {
+            id: 108,
+            question: "Faktor penghambat pemberian pelayanan sosial terhadap lansia antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Keterbatasan anggaran, belum ada sinergitas, dan belum ada persepsi yang sama."
+        }, {
+            id: 109,
+            question: "Pilar solidaritas sosial dalam jaminan sosial bagi lansia berbentuk....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Redistribusi pendapatan, dukungan saling menguntungkan, dan aksi kolektif."
+        }, {
+            id: 110,
+            question: "Beberapa strategi yang dapat digunakan untuk memberdayakan lansia antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Mendorong aktif, pemberdayaan ekonomi, dan dukungan pekerja sosial."
+        }, {
+            id: 111,
+            question: "Adanya perbedaan pada berbagai macam akses seperti akses pendidikan, kesehatan, ekonomi, sosial, dan perumusan kebijakan publik merupakan gambaran tentang....",
+            options: ["A. marginalisasi", "B. diskriminasi", "C. dominasi", "D. stereotipe"],
+            correct: 1,
+            explanation: "Perbedaan akses adalah diskriminasi."
+        }, {
+            id: 112,
+            question: "Menurut Fakih, ketidakadilan gender dapat termanifestasikan dalam beberapa bentuk, antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Marginalisasi, stereotip, dan dominasi."
+        }, {
+            id: 113,
+            question: "Pemaksaan kehendak seseorang terhadap orang lain, baik dalam bentuk kekerasan fisik, mental, psikologis, maupun kekerasan seksual, merupakan gambaran tentang....",
+            options: ["A. marginalisasi", "B. diskriminasi", "C. dominasi", "D. violence"],
+            correct: 3,
+            explanation: "Pemaksaan kehendak adalah violence (kekerasan)."
+        }, {
+            id: 114,
+            question: "Perspektif gender yang melihat budaya patriarki sebagai penyebab adanya ketidakadilan gender bersumber pada teori....",
+            options: [
+                "A. 1) nature",
+                "B. 2) nurture",
+                "C. 3) sharing of power",
+                "D. 1) dan 3) saja"
+            ],
+            correct: 1,
+            explanation: "Budaya patriarki adalah teori nurture."
+        }, {
+            id: 115,
+            question: "Perspektif gender yang melihat ketidakadilan gender bersumber pada teori budaya patriarki sebagai penyebab adanya ketidakadilan adalah....",
+            options: [
+                "A. 1) nature",
+                "B. 2) nurture",
+                "C. 3) sharing of power",
+                "D. 1) dan 3) saja"
+            ],
+            correct: 1,
+            explanation: "Budaya patriarki adalah teori nurture."
+        }, {
+            id: 116,
+            question: "Konstruksi peran gender yang dibentuk melalui sosialisasi tidak hanya dipengaruhi oleh jenis kelamin semata, tetapi juga melalui....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Kelas sosial, latar belakang kehidupan, dan etnis."
+        }, {
+            id: 117,
+            question: "Menurut Michael Foucault, kekuasaan merupakan....",
+            options: [
+                "A. institusi",
+                "B. struktur",
+                "C. kekuatan yang dimiliki",
+                "D. nama yang diberikan pada situasi"
+            ],
+            correct: 3,
+            explanation: "Foucault: kekuasaan adalah nama yang diberikan pada situasi."
+        }, {
+            id: 118,
+            question: "Bentuk kekerasan yang terjadi akibat kekerasan berbasis gender berdasarkan UU KDRT No. 23 Tahun 2004 antara lain kekerasan....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Kekerasan fisik, seksual, dan ekonomi."
+        }, {
+            id: 119,
+            question: "Latar belakang psikologis yang memungkinkan seorang laki-laki melakukan kekerasan terhadap pasangannya antara lain....",
+            options: [
+                "A. 1) dan 2) saja",
+                "B. 1) dan 3) saja",
+                "C. 2) dan 3) saja",
+                "D. 1), 2), dan 3)"
+            ],
+            correct: 3,
+            explanation: "Ekspresi ketidakberdayaan, adanya konflik, dan self-esteem rendah."
+        }, {
+            id: 120,
+            question: "Penelitian di Kanada mengindikasikan bahwa laki-laki pelaku kekerasan sesungguhnya memiliki self-esteem yang rendah, yang dimanifestasikan dalam bentuk....",
+            options: [
+                "A. 1) berperilaku menguasai pasangan",
+                "B. 2) bertindak kasar kepada pasangan",
+                "C. 3) berganti pasangan",
+                "D. 1) dan 2) saja"
+            ],
+            correct: 0,
+            explanation: "Self-esteem rendah dimanifestasikan dengan berperilaku menguasai pasangan."
+        }];
+
+        // ============================================================
+        //  2.  KONFIGURASI & STATE
+        // ============================================================
+        const TOTAL = MASTER_QUESTIONS.length;
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let answers = {};
+        let results = {};
+        let mode = 'all';
+        let selectedCount = 10;
+        let rangeStart = 1;
+        let rangeEnd = TOTAL;
+        let pickedSet = new Set();
+        let darkMode = localStorage.getItem('darkMode') === 'true';
+        let examMode = false;
+
+        // ============================================================
+        //  3.  DOM REFS
+        // ============================================================
+        const $ = id => document.getElementById(id);
+        const setupPanel = $('setupPanel');
+        const questionPanel = $('questionPanel');
+        const resultPanel = $('resultPanel');
+        const reviewPanel = $('reviewPanel');
+        const totalSoalDisplay = $('totalSoalDisplay');
+        const progressText = $('progressText');
+        const correctCount = $('correctCount');
+        const wrongCount = $('wrongCount');
+        const scorePercent = $('scorePercent');
+        const progressFill = $('progressFill');
+        const qNumDisplay = $('qNumDisplay');
+        const qIndexDisplay = $('qIndexDisplay');
+        const questionText = $('questionText');
+        const optionsContainer = $('optionsContainer');
+        const feedback = $('feedback');
+        const feedbackAnswer = $('feedbackAnswer');
+        const feedbackExplanation = $('feedbackExplanation');
+        const nextQuestionBtn = $('nextQuestionBtn');
+        const prevBtn = $('prevBtn');
+        const nextBtn = $('nextBtn');
+        const questionNav = $('questionNav');
+        const startBtn = $('startBtn');
+        const resetBtn = $('resetBtn');
+        const themeToggle = $('themeToggle');
+        const modeOptions = $('modeOptions');
+        const reviewList = $('reviewList');
+        const closeReviewBtn = $('closeReviewBtn');
+        const reviewToggleBtn = $('reviewToggleBtn');
+        const finalScore = $('finalScore');
+        const finalCorrect = $('finalCorrect');
+        const finalWrong = $('finalWrong');
+        const retryWrongBtn = $('retryWrongBtn');
+        const resultResetBtn = $('resultResetBtn');
+        const resultReviewBtn = $('resultReviewBtn');
+        const restartFromQuestionBtn = $('restartFromQuestionBtn');
+
+        // ============================================================
+        //  4.  UTILITY
+        // ============================================================
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function getLetter(i) { return String.fromCharCode(65 + i); }
+
+        // ============================================================
+        //  5.  DARK MODE
+        // ============================================================
+        function applyTheme() {
+            document.documentElement.classList.toggle('dark', darkMode);
+            themeToggle.textContent = darkMode ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', darkMode);
+        }
+        themeToggle.addEventListener('click', () => { darkMode = !darkMode;
+            applyTheme(); });
+        applyTheme();
+
+        // ============================================================
+        //  6.  SETUP UI
+        // ============================================================
+        function renderSetupOptions() {
+            const html = [];
+            if (mode === 'all') {
+                html.push(`<p style="color:var(--text-secondary);">✅ Akan menampilkan seluruh <strong>${TOTAL}</strong> soal.</p>`);
+            }
+            if (mode === 'count') {
+                html.push(`
+                    <label>Jumlah soal:
+                        <select id="countSelect">
+                            ${[5,10,15,20,30,50,75,100].map(n => `<option value="${n}" ${n===selectedCount?'selected':''}>${n}</option>`).join('')}
+                        </select>
+                    </label>
+                `);
+            }
+            if (mode === 'range') {
+                html.push(`
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+                        <label>Dari:
+                            <input type="number" id="rangeStart" value="${rangeStart}" min="1" max="${TOTAL}" style="width:70px;">
+                        </label>
+                        <label>Sampai:
+                            <input type="number" id="rangeEnd" value="${rangeEnd}" min="1" max="${TOTAL}" style="width:70px;">
+                        </label>
+                        <span style="font-size:0.85rem;color:var(--text-secondary);">(1-${TOTAL})</span>
+                    </div>
+                `);
+            }
+            if (mode === 'pick') {
+                html.push(`
+                    <div style="display:flex;flex-wrap:wrap;gap:4px;max-height:200px;overflow-y:auto;padding:8px;border:1px solid var(--border);border-radius:8px;">
+                        ${Array.from({length:TOTAL}, (_,i) => {
+                            const num = i+1;
+                            const checked = pickedSet.has(num) ? 'checked' : '';
+                            return `<label style="display:flex;align-items:center;gap:4px;font-size:0.8rem;cursor:pointer;padding:2px 6px;border-radius:4px;background:var(--gray-light);">
+                                <input type="checkbox" value="${num}" ${checked} class="pick-checkbox">
+                                ${num}
+                            </label>`;
+                        }).join('')}
+                    </div>
+                    <div style="margin-top:6px;">
+                        <button class="btn btn-sm btn-outline" id="selectAllPick">Pilih Semua</button>
+                        <button class="btn btn-sm btn-outline" id="deselectAllPick">Hapus Semua</button>
+                    </div>
+                `);
+            }
+            if (mode === 'random') {
+                html.push(`
+                    <label>Jumlah soal acak:
+                        <input type="number" id="randomCount" value="${selectedCount}" min="1" max="${TOTAL}" style="width:80px;">
+                    </label>
+                    <span style="font-size:0.85rem;color:var(--text-secondary);">(maks ${TOTAL})</span>
+                `);
+            }
+            modeOptions.innerHTML = html.join('');
+
+            if (mode === 'count') {
+                const sel = document.getElementById('countSelect');
+                if (sel) sel.addEventListener('change', e => { selectedCount = parseInt(e.target.value) || 10; });
+            }
+            if (mode === 'range') {
+                const s = document.getElementById('rangeStart');
+                const e = document.getElementById('rangeEnd');
+                if (s) s.addEventListener('change', () => { rangeStart = Math.min(parseInt(s.value) || 1, TOTAL); });
+                if (e) e.addEventListener('change', () => { rangeEnd = Math.min(parseInt(e.value) || TOTAL, TOTAL); });
+            }
+            if (mode === 'pick') {
+                document.querySelectorAll('.pick-checkbox').forEach(cb => {
+                    cb.addEventListener('change', () => {
+                        const num = parseInt(cb.value);
+                        if (cb.checked) pickedSet.add(num);
+                        else pickedSet.delete(num);
+                    });
+                });
+                const selAll = document.getElementById('selectAllPick');
+                const deselAll = document.getElementById('deselectAllPick');
+                if (selAll) selAll.addEventListener('click', () => {
+                    document.querySelectorAll('.pick-checkbox').forEach(cb => { cb.checked = true;
+                        pickedSet.add(parseInt(cb.value)); });
+                });
+                if (deselAll) deselAll.addEventListener('click', () => {
+                    document.querySelectorAll('.pick-checkbox').forEach(cb => { cb.checked = false;
+                        pickedSet.delete(parseInt(cb.value)); });
+                });
+            }
+            if (mode === 'random') {
+                const rc = document.getElementById('randomCount');
+                if (rc) rc.addEventListener('change', () => { selectedCount = Math.min(parseInt(rc.value) || 5, TOTAL); });
+            }
+        }
+
+        document.querySelectorAll('#modeTabs .btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#modeTabs .btn').forEach(b => b.classList.remove('active-mode'));
+                btn.classList.add('active-mode');
+                mode = btn.dataset.mode;
+                if (mode !== 'pick') pickedSet.clear();
+                renderSetupOptions();
+            });
+        });
+
+        // ============================================================
+        //  7.  BUILD SOAL (acak opsi + distribusi merata)
+        // ============================================================
+        function buildQuestions(source) {
+            const result = [];
+            const targetPositions = [];
+            for (let i = 0; i < source.length; i++) {
+                targetPositions.push(i % 4);
+            }
+            shuffle(targetPositions);
+
+            for (let i = 0; i < source.length; i++) {
+                const q = source[i];
+                const opts = q.options.slice();
+                const correctText = opts[q.correct];
+                const shuffled = shuffle(opts);
+                const newCorrect = shuffled.indexOf(correctText);
+
+                const targetPos = targetPositions[i % targetPositions.length];
+                const wrongOpts = opts.filter(o => o !== correctText);
+                shuffle(wrongOpts);
+                const newOpts = [];
+                for (let p = 0; p < 4; p++) {
+                    if (p === targetPos) newOpts[p] = correctText;
+                    else newOpts[p] = wrongOpts.pop();
+                }
+                result.push({
+                    id: q.id,
+                    question: q.question,
+                    options: newOpts,
+                    correct: targetPos,
+                    explanation: q.explanation || 'Penjelasan tidak tersedia.'
+                });
+            }
+            return result;
+        }
+
+        // ============================================================
+        //  8.  MULAI LATIHAN
+        // ============================================================
+        function startPractice() {
+            let pool = [];
+            if (mode === 'all') {
+                pool = MASTER_QUESTIONS.slice();
+            } else if (mode === 'count') {
+                const count = Math.min(selectedCount, TOTAL);
+                pool = shuffle(MASTER_QUESTIONS.slice()).slice(0, count);
+            } else if (mode === 'range') {
+                const start = Math.max(1, Math.min(rangeStart, TOTAL));
+                const end = Math.min(Math.max(rangeEnd, start), TOTAL);
+                pool = MASTER_QUESTIONS.slice(start - 1, end);
+            } else if (mode === 'pick') {
+                const ids = Array.from(pickedSet).filter(n => n >= 1 && n <= TOTAL);
+                if (ids.length === 0) { alert('Silakan pilih setidaknya 1 soal.'); return; }
+                pool = ids.map(id => MASTER_QUESTIONS[id - 1]).filter(Boolean);
+            } else if (mode === 'random') {
+                const count = Math.min(selectedCount, TOTAL);
+                pool = shuffle(MASTER_QUESTIONS.slice()).slice(0, count);
+            } else {
+                pool = MASTER_QUESTIONS.slice();
+            }
+            if (pool.length === 0) { alert('Tidak ada soal yang dipilih.'); return; }
+
+            currentQuestions = buildQuestions(pool);
+            shuffle(currentQuestions);
+            answers = {};
+            results = {};
+            currentIndex = 0;
+
+            setupPanel.classList.add('hidden');
+            questionPanel.classList.remove('hidden');
+            resultPanel.classList.add('hidden');
+            reviewPanel.classList.add('hidden');
+
+            renderQuestion();
+            renderNav();
+            updateStats();
+        }
+
+        // ============================================================
+        //  9.  RENDER SOAL
+        // ============================================================
+        function renderQuestion() {
+            const q = currentQuestions[currentIndex];
+            if (!q) return;
+
+            qNumDisplay.textContent = `Soal ${currentIndex + 1}`;
+            qIndexDisplay.textContent = `${currentIndex + 1} / ${currentQuestions.length}`;
+            questionText.textContent = q.question;
+
+            optionsContainer.innerHTML = '';
+            const selected = answers[currentIndex];
+            const isAnswered = selected !== undefined;
+            const isCorrect = results[currentIndex];
+
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement('div');
+                div.className = 'option';
+                if (isAnswered) div.classList.add('disabled');
+                if (isAnswered && idx === q.correct) div.classList.add('correct');
+                if (isAnswered && selected === idx && !isCorrect) div.classList.add('wrong');
+                if (isAnswered && selected === idx) div.classList.add('selected');
+
+                const letter = document.createElement('span');
+                letter.className = 'letter';
+                letter.textContent = getLetter(idx);
+
+                const text = document.createElement('span');
+                text.className = 'text';
+                text.textContent = opt;
+
+                div.appendChild(letter);
+                div.appendChild(text);
+
+                if (!isAnswered) {
+                    div.addEventListener('click', () => handleAnswer(idx));
+                }
+                optionsContainer.appendChild(div);
+            });
+
+            feedback.classList.remove('show', 'correct', 'wrong');
+            if (isAnswered) {
+                const isCorrectVal = results[currentIndex];
+                feedback.classList.add('show', isCorrectVal ? 'correct' : 'wrong');
+                const correctLetter = getLetter(q.correct);
+                const correctText = q.options[q.correct];
+                feedbackAnswer.textContent = isCorrectVal ?
+                    `✅ Benar! Jawaban: ${correctLetter}. ${correctText}` :
+                    `❌ Salah. Jawaban yang benar: ${correctLetter}. ${correctText}`;
+                feedbackExplanation.textContent = q.explanation || '';
+                nextQuestionBtn.disabled = false;
+            } else {
+                nextQuestionBtn.disabled = true;
+            }
+
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === currentQuestions.length - 1;
+
+            questionPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            renderNav();
+            updateStats();
+        }
+
+        // ============================================================
+        //  10. HANDLE ANSWER
+        // ============================================================
+        function handleAnswer(idx) {
+            if (answers[currentIndex] !== undefined) return;
+
+            const q = currentQuestions[currentIndex];
+            const isCorrect = idx === q.correct;
+            answers[currentIndex] = idx;
+            results[currentIndex] = isCorrect;
+
+            saveProgress();
+            renderQuestion();
+
+            const optDivs = optionsContainer.querySelectorAll('.option');
+            optDivs.forEach((div, i) => {
+                if (i === q.correct) div.classList.add('correct');
+                if (i === idx && !isCorrect) div.classList.add('wrong');
+                if (i === idx) div.classList.add('selected');
+            });
+
+            if (examMode) {
+                feedback.classList.remove('show');
+                const allAnswered = currentQuestions.every((_, i) => answers[i] !== undefined);
+                if (allAnswered) showResult();
+                renderNav();
+                updateStats();
+                nextQuestionBtn.disabled = false;
+            } else {
+                nextQuestionBtn.disabled = false;
+                updateStats();
+            }
+        }
+
+        // ============================================================
+        //  11. NAVIGASI
+        // ============================================================
+        function goToQuestion(index) {
+            if (index < 0 || index >= currentQuestions.length) return;
+            currentIndex = index;
+            renderQuestion();
+        }
+
+        prevBtn.addEventListener('click', () => goToQuestion(currentIndex - 1));
+        nextBtn.addEventListener('click', () => goToQuestion(currentIndex + 1));
+        nextQuestionBtn.addEventListener('click', () => {
+            if (currentIndex < currentQuestions.length - 1) {
+                goToQuestion(currentIndex + 1);
+            } else {
+                if (examMode) {
+                    showResult();
+                } else {
+                    const allAnswered = currentQuestions.every((_, i) => answers[i] !== undefined);
+                    if (allAnswered) showResult();
+                    else alert('Masih ada soal yang belum dijawab!');
+                }
+            }
+        });
+
+        // ============================================================
+        //  12. NAVIGASI GRID
+        // ============================================================
+        function renderNav() {
+            questionNav.innerHTML = '';
+            currentQuestions.forEach((q, i) => {
+                const span = document.createElement('span');
+                span.className = 'qn';
+                span.textContent = i + 1;
+                if (i === currentIndex) span.classList.add('current');
+                else if (answers[i] !== undefined) {
+                    span.classList.add(results[i] ? 'answered-correct' : 'answered-wrong');
+                }
+                span.addEventListener('click', () => goToQuestion(i));
+                questionNav.appendChild(span);
+            });
+        }
+
+        // ============================================================
+        //  13. STATS
+        // ============================================================
+        function updateStats() {
+            const total = currentQuestions.length;
+            const answered = Object.keys(answers).length;
+            const correct = Object.values(results).filter(v => v === true).length;
+            const wrong = Object.values(results).filter(v => v === false).length;
+            const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+            progressText.textContent = `${answered}/${total}`;
+            correctCount.textContent = correct;
+            wrongCount.textContent = wrong;
+            scorePercent.textContent = pct + '%';
+            progressFill.style.width = total > 0 ? `${(answered/total)*100}%` : '0%';
+        }
+
+        // ============================================================
+        //  14. HASIL
+        // ============================================================
+        function showResult() {
+            const total = currentQuestions.length;
+            const correct = Object.values(results).filter(v => v === true).length;
+            const wrong = total - correct;
+            const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+            finalScore.textContent = pct + '%';
+            finalCorrect.textContent = correct;
+            finalWrong.textContent = wrong;
+
+            questionPanel.classList.add('hidden');
+            resultPanel.classList.remove('hidden');
+            reviewPanel.classList.add('hidden');
+            saveProgress();
+        }
+
+        // ============================================================
+        //  15. REVIEW
+        // ============================================================
+        function renderReview(filter = 'all') {
+            reviewList.innerHTML = '';
+            let items = currentQuestions.map((q, i) => ({ q, i, answered: answers[i] !== undefined, correct: results[i] }));
+
+            if (filter === 'correct') items = items.filter(it => it.answered && it.correct);
+            else if (filter === 'wrong') items = items.filter(it => it.answered && !it.correct);
+            else if (filter === 'unanswered') items = items.filter(it => !it.answered);
+
+            if (items.length === 0) {
+                reviewList.innerHTML = '<p style="color:var(--text-secondary);padding:12px;">Tidak ada soal dalam kategori ini.</p>';
+                return;
+            }
+
+            items.forEach(({ q, i, answered, correct }) => {
+                const div = document.createElement('div');
+                div.className = 'review-item';
+                const num = document.createElement('span');
+                num.className = 'r-num';
+                num.textContent = i + 1;
+                const qText = document.createElement('span');
+                qText.className = 'r-q';
+                qText.textContent = q.question;
+                const ans = document.createElement('span');
+                ans.className = `r-answer ${answered ? (correct ? 'correct' : 'wrong') : ''}`;
+                if (answered) {
+                    const letter = getLetter(q.correct);
+                    ans.textContent = `✓ ${letter}. ${q.options[q.correct]}`;
+                } else {
+                    ans.textContent = '⏳ Belum dijawab';
+                }
+                div.appendChild(num);
+                div.appendChild(qText);
+                div.appendChild(ans);
+                reviewList.appendChild(div);
+            });
+        }
+
+        reviewToggleBtn.addEventListener('click', () => {
+            if (reviewPanel.classList.contains('hidden')) {
+                reviewPanel.classList.remove('hidden');
+                renderReview('all');
+            } else {
+                reviewPanel.classList.add('hidden');
+            }
+        });
+
+        closeReviewBtn.addEventListener('click', () => { reviewPanel.classList.add('hidden'); });
+
+        document.querySelectorAll('.review-filter .btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.review-filter .btn').forEach(b => b.classList.remove(
+                'active-review-filter'));
+                btn.classList.add('active-review-filter');
+                renderReview(btn.dataset.filter);
+            });
+        });
+
+        // ============================================================
+        //  16. RESET & RETRY
+        // ============================================================
+        function resetAll() {
+            answers = {};
+            results = {};
+            currentQuestions = [];
+            currentIndex = 0;
+            setupPanel.classList.remove('hidden');
+            questionPanel.classList.add('hidden');
+            resultPanel.classList.add('hidden');
+            reviewPanel.classList.add('hidden');
+            localStorage.removeItem('quizProgressSosial');
+            updateStats();
+        }
+
+        resetBtn.addEventListener('click', resetAll);
+        resultResetBtn.addEventListener('click', resetAll);
+        restartFromQuestionBtn.addEventListener('click', () => {
+            if (confirm('Yakin ingin mengulang latihan dari awal? Progress akan direset.')) {
+                resetAll();
+            }
+        });
+
+        retryWrongBtn.addEventListener('click', () => {
+            const wrongIndices = Object.keys(results).filter(k => results[k] === false).map(Number);
+            if (wrongIndices.length === 0) { alert('Tidak ada soal yang salah! 🎉'); return; }
+            const wrongQuestions = wrongIndices.map(i => currentQuestions[i]);
+            currentQuestions = buildQuestions(wrongQuestions);
+            shuffle(currentQuestions);
+            answers = {};
+            results = {};
+            currentIndex = 0;
+            resultPanel.classList.add('hidden');
+            questionPanel.classList.remove('hidden');
+            renderQuestion();
+            renderNav();
+            updateStats();
+        });
+
+        resultReviewBtn.addEventListener('click', () => {
+            resultPanel.classList.add('hidden');
+            reviewPanel.classList.remove('hidden');
+            renderReview('all');
+        });
+
+        // ============================================================
+        //  17. LOCAL STORAGE
+        // ============================================================
+        function saveProgress() {
+            try {
+                const data = {
+                    questions: currentQuestions.map(q => q.id),
+                    answers: answers,
+                    results: results,
+                    index: currentIndex,
+                    mode: mode,
+                    timestamp: Date.now()
+                };
+                localStorage.setItem('quizProgressSosial', JSON.stringify(data));
+            } catch (e) { /* ignore */ }
+        }
+
+        function loadProgress() {
+            try {
+                const raw = localStorage.getItem('quizProgressSosial');
+                if (!raw) return false;
+                const data = JSON.parse(raw);
+                if (!data.questions || !data.answers) return false;
+                const ids = data.questions;
+                const valid = ids.every(id => MASTER_QUESTIONS.some(q => q.id === id));
+                if (!valid) return false;
+                const pool = ids.map(id => MASTER_QUESTIONS.find(q => q.id === id)).filter(Boolean);
+                if (pool.length === 0) return false;
+                currentQuestions = buildQuestions(pool);
+                const orderMap = {};
+                data.questions.forEach((id, idx) => { orderMap[id] = idx; });
+                currentQuestions.sort((a, b) => (orderMap[a.id] || 0) - (orderMap[b.id] || 0));
+                answers = data.answers || {};
+                results = data.results || {};
+                currentIndex = Math.min(data.index || 0, currentQuestions.length - 1);
+                Object.keys(answers).forEach(k => {
+                    const idx = parseInt(k);
+                    if (idx >= currentQuestions.length) delete answers[k];
+                });
+                Object.keys(results).forEach(k => {
+                    const idx = parseInt(k);
+                    if (idx >= currentQuestions.length) delete results[k];
+                });
+                return true;
+            } catch (e) { return false; }
+        }
+
+        // ============================================================
+        //  18. INIT
+        // ============================================================
+        function init() {
+            totalSoalDisplay.textContent = TOTAL;
+            renderSetupOptions();
+
+            document.getElementById('examModeCheck').addEventListener('change', function() {
+                examMode = this.checked;
+            });
+
+            const hasProgress = loadProgress();
+            if (hasProgress && currentQuestions.length > 0) {
+                setupPanel.classList.add('hidden');
+                questionPanel.classList.remove('hidden');
+                renderQuestion();
+                renderNav();
+                updateStats();
+                const allAnswered = currentQuestions.every((_, i) => answers[i] !== undefined);
+                if (allAnswered && Object.keys(answers).length > 0) {
+                    showResult();
+                }
+            } else {
+                resetAll();
+            }
+
+            startBtn.addEventListener('click', () => {
+                if (Object.keys(answers).length > 0) {
+                    if (!confirm('Latihan sedang berjalan. Mulai ulang?')) return;
+                }
+                startPractice();
+            });
+
+            document.querySelector('#modeTabs .btn[data-mode="all"]')?.click();
+        }
+
+        init();
+        console.log(`✅ ${TOTAL} soal Perubahan & Masalah Sosial berhasil dimuat.`);
+    </script>
+</body>
+</html>
